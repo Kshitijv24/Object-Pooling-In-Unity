@@ -19,7 +19,14 @@ public class Spawner : MonoBehaviour
         while(true)
         {
             float randomSpawnPosition = Random.Range(leftSpawnPoint.position.x, rightSpawnPoint.position.x);
-            Instantiate(objectToSpawn, new Vector3(randomSpawnPosition, 4, 0), Quaternion.identity);
+            //Instantiate(objectToSpawn, new Vector3(randomSpawnPosition, 4, 0), Quaternion.identity);
+            GameObject spawnedObject = ObjectPool.Instance.GetPooledGamedObject();
+
+            if(spawnedObject != null )
+            {
+                spawnedObject.transform.position = new Vector3(randomSpawnPosition, 4, 0);
+                spawnedObject.SetActive(true);
+            }
             yield return new WaitForSeconds(0.2f);
         }
     }

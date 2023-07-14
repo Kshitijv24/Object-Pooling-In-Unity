@@ -9,7 +9,7 @@ public class Ground : MonoBehaviour
     {
         if(collision.gameObject.tag == "Square")
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 }
